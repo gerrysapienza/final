@@ -10,26 +10,36 @@ DB.create_table! :events do
   String :title
   String :description, text: true
   String :date
+  String :time
   String :location
 end
-DB.create_table! :rsvps do
+DB.create_table! :registrations do
   primary_key :id
   foreign_key :event_id
+  foreign_key :user_id
   Boolean :going
   String :name
   String :email
   String :comments, text: true
 end
+DB.create_table! :users do
+  primary_key :id
+  String :name
+  String :email
+  String :password
+end
 
 # Insert initial (seed) data
 events_table = DB.from(:events)
 
-events_table.insert(title: "Bacon Burger Taco Fest", 
-                    description: "Here we go again bacon burger taco fans, another Bacon Burger Taco Fest is here!",
-                    date: "June 21",
-                    location: "Kellogg Global Hub")
+events_table.insert(title: "Harmon Hundred", 
+                    description: "CCCC's annual signature riding event",
+                    date: "2020-08-30",
+                    time: "8:00 AM",
+                    location: "Wilmot Union High School")
 
-events_table.insert(title: "Kaleapolooza", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
+events_table.insert(title: "Honey Do Avoiders", 
+                    description: "Usually a large number of riders show up. Groups of 5+ for every pace level are normal. Distances range from 35-60 Miles.",
+                    date: "2020-06-13",
+                    time: "8:00 AM",
+                    location: "Paul Douglas Forest Preserve")
