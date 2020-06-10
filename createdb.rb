@@ -12,6 +12,7 @@ DB.create_table! :events do
   String :date
   String :time
   String :location
+  String :host_name
 end
 DB.create_table! :registrations do
   primary_key :id
@@ -36,10 +37,12 @@ events_table.insert(title: "Harmon Hundred",
                     description: "CCCC's annual signature riding event",
                     date: "2020-08-30",
                     time: "8:00 AM",
-                    location: "Wilmot Union High School")
+                    location: "Wilmot Union High School",
+                    host_name: "Paul")
 
 events_table.insert(title: "Honey Do Avoiders", 
                     description: "Usually a large number of riders show up. Groups of 5+ for every pace level are normal. Distances range from 35-60 Miles.",
                     date: "2020-06-13",
                     time: "8:00 AM",
-                    location: "Paul Douglas Forest Preserve")
+                    location: "Paul Douglas Forest Preserve",
+                    host_name: "Emily")

@@ -41,7 +41,6 @@ get "/events/:id" do
     @registrations = registrations_table.where(:event_id => params["id"]).to_a
     # SELECT COUNT(*) FROM registrations WHERE event_id=:id AND going=1
     @count = registrations_table.where(:event_id => params["id"], :going => true).count
-    
     view "event"
 end
 
@@ -108,7 +107,11 @@ get "/logout" do
 end
 
 # Form to create a new ride
-get "/events/new" do
+get "/event/new" do
     view "new_event"
 end
 
+# Receiving end of the create ride form
+post "/event/create" do
+    view "create_event"
+end
