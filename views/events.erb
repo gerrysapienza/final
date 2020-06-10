@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-sm-4">
         <% for event in @events %>
-            <p><a href="/events/<%= event[:id] %>"><%= event[:title] %></a></p>
+            <p><%= event[:date] %> <a href="/events/<%= event[:id] %>"><%= event[:title] %></a></p>
         <% end %>
         <% if @current_user %>
             <p class="mt-5">
