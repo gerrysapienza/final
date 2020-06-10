@@ -1,11 +1,35 @@
 <div class="row">
-    <div class="col-sm-9">
+    <div class="col-sm-8">
         <h2>
             <i class="far fa-calendar-alt"></i>
             <%= @event[:date] %>
         </h2>
         <h1><%= @event[:title] %></h1>
         <p><%= @event[:description] %></p>
+ 
+    </div>
+    <div class="col-sm-8">
+        <h3>When?</h3>
+        <p><%= @event[:date] %>, <%= @event[:time] %></p>
+        <h3>Where?</h3>
+        <p><%= @event[:location] %></p>
+        <p><% results = Geocoder.search(@event[:location]) %>
+           <% @lat_long = results.first.coordinates.join(",") %>
+        </p>
+        <p>
+            <iframe
+                width="600"
+                height="450"
+                frameborder="0" 
+                style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw&q=<%= @lat_long %>&zoom=15" allowfullscreen>
+            </iframe>
+        </p>
+
+    </div>
+    <div class="col-sm-4">
+        <h3>How many riders so far?</h3>
+        <p><%= @count %></p>
         <% for registration in @registrations %>
             <% user = @users_table.where(:id => registration[:user_id]).to_a[0] %>
             <div class="media">
@@ -24,12 +48,5 @@
             <a href="/events/<%= @event[:id] %>/registrations/new" class="btn btn-primary">Register now!</a>
         </p>
     </div>
-    <div class="col-sm-3">
-        <h3>When?</h3>
-        <p><%= @event[:date] %></p>
-        <h3>Where?</h3>
-        <p><%= @event[:location] %></p>
-        <h3>How many guests so far?</h3>
-        <p><%= @count %></p>
-    </div>
+    
 </div>

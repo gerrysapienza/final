@@ -23,23 +23,32 @@
   <body>
 
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="/">EventBite</a>
+        <div class="container">    
+        <a class="navbar-brand" href="/">C<i class="fas fa-biking"></i>k County Cycling Community</a>
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users/new">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/logins/new">Sign In</a>
-                </li>
+                <% if @current_user %>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                    </ul>
+                <% else %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users/new">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logins/new">Sign In</a>
+                    </li>
+                <% end %>
             </ul>
             <% if @current_user %>
                 <ul class="navbar-nav ml-auto">
                     <li class="navbar-text">
-                        Logged in as <%= @current_user[:name] %>
+                        Welcome <%= @current_user[:name] %>!
                     </li>
                     <li class="nav-item">
                         <a href="/logout" class="nav-link">Logout</a>

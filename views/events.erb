@@ -1,5 +1,12 @@
 <h1>Upcoming Rides</h1>
 
-<% for event in @events %>
-    <p><a href="/events/<%= event[:id] %>"><%= event[:title] %></a></p>
-<% end %>
+<div class="row">
+    <div class="col-sm-4">
+        <% for event in @events %>
+            <p><a href="/events/<%= event[:id] %>"><%= event[:title] %></a></p>
+        <% end %>
+        <p class="mt-5">
+            <a href="/events/new" class="btn btn-primary">Host a New Ride!</a>
+        </p>
+    </div>
+</div>
