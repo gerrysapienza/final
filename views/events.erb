@@ -5,8 +5,10 @@
         <% for event in @events %>
             <p><a href="/events/<%= event[:id] %>"><%= event[:title] %></a></p>
         <% end %>
-        <p class="mt-5">
-            <a href="/event/new" class="btn btn-primary">Host a New Ride!</a>
-        </p>
+        <% if @current_user %>
+            <p class="mt-5">
+                <a href="/event/new" class="btn btn-primary">Host a New Ride!</a>
+            </p>
+            <% end %>
     </div>
 </div>

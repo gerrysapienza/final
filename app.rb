@@ -113,5 +113,12 @@ end
 
 # Receiving end of the create ride form
 post "/event/create" do
+    events_table.insert(:title => params["title"],
+        :date => params["date"],
+        :time => params["time"],
+        :location => params["location"],
+        :host_name => params["host_name"],
+        :description => params["description"])
+    @event = events_table.where(:id => params["id"]).to_a[0]
     view "create_event"
 end
