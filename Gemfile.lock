@@ -14,11 +14,12 @@ GEM
       ruby2_keywords (~> 0.0.1)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    pg (1.2.3)
     rack (2.2.2)
     rack-protection (2.0.8.1)
       rack
     ruby2_keywords (0.0.2)
-    sequel (5.32.0)
+    sequel (5.33.0)
     sinatra (2.0.8.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -44,6 +45,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   geocoder
+  pg
   sequel
   sinatra
   sinatra-contrib
